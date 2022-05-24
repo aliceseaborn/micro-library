@@ -9,5 +9,17 @@ Core features:
 - An index available to display the current offerings
 - The ability to extend the lease on a book up to a specified number of days
 
+If running this application for the first time, please follow the commands below in your shell prompt:
+```BASH
+conda create -y -n micro-library --file conda-spec.txt
+pip install -r requirements.txt
+export FLASK_ENV=development
+export FLASK_APP=app.py
+flask db init
+flask db migrate
+flask db upgrade
+flask run
+````
+
 
 *alice seaborn.*
