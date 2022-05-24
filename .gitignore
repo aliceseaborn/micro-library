@@ -1,0 +1,11 @@
+# JupyterLab caches
+**.ipynb_checkpoints/
+
+# Python compiled
+**.pyc
+
+# Configuration secrets
+project/source/config.py
+
+# Migrations
+project/migrations
