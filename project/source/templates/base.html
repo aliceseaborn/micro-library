@@ -1,0 +1,70 @@
+{# BASE #}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<title>uLibrary</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/master.css') }}">
+
+	<!--- Bootstrap CSS --->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" crossorigin="anonymous">
+
+	<!--- Bootstrap JS --->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+	<!--- JQuery CDN 3.x ---> 
+	<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+
+	<!--- Pygments Syntax Highlighting --->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/pygments.css') }}">
+
+</head>
+<body>
+
+<!--- NAV BAR --->
+<nav class="navbar navbar-expand-lg navbar-custom">
+	<div class="container-fluid">
+		<a class="navbar-brand navbar-brand-custom" href="{{ url_for('index') }}">Micro Library</a>
+		<div class="collapse navbar-collapse" id="navb">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link nav-link-custom" href="{{ url_for('wiki') }}">Wiki</a>
+				</li>
+			</ul>
+			<ul class="navbar-nav">
+				{% if current_user.is_authenticated %}
+				<li class="nav-link">
+					<a class="nav-link nav-link-custom" href="{{ url_for('logout') }}">Log Out</a>
+				</li>
+				{% else %}
+				<li class="nav-item">
+					<a class="nav-link nav-link-custom" href="{{ url_for('register') }}">Register</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link nav-link-custom" href="{{ url_for('login') }}">Login</a>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</nav>
+
+{% for mess in get_flashed_messages() %}
+<div class="alert alert-dismissible fade show" role="alert" style="background-color: #97d7d7">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+	{{mess}}
+</div>
+{% endfor %}
+
+{% block content %}
+
+
+{% endblock %}
+
+</body>
+</html>

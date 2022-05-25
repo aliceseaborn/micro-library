@@ -1,0 +1,19 @@
+{# WIKI #}
+
+{% extends "base.html" %}
+{% block content %}
+
+<!--- CONTENT --->
+<div class="jumbotron" style="padding-top: 1rem;">
+
+	<h3>Wiki</h3>
+	<p>Documentation for the history and use of this platform.</p>
+	<ul>
+	{% for page in pages %}
+		<li><a href="{{ page.path }}"> {{ page.title }} </a></li>
+	{% endfor %}
+	</ul>
+
+</div>
+
+{% endblock %}

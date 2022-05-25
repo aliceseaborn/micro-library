@@ -1,0 +1,30 @@
+{# INDEX #}
+
+{% extends "base.html" %}
+{% block content %}
+
+<!--- CONTENT --->
+<div class="jumbotron" style="padding-top: 1rem;">
+
+	{% if current_user.is_authenticated %}
+		<h3>Greetings {{ current_user.username }}</h3>
+	{% else %}
+		<h3>Greetings!</h3>
+	{% endif %}
+	<hr>
+	<p>
+		This website is for managing a micro library. The goal is to provide a graphical front-end for tracking available books and associating them with relevant users if they are checked out. Users must register to use this platform by entering a valid username and email address. Once they are inside of the system, they can browse the available books and check them out in-person with the help of a registered librarian. Books are automatically leased for a pre-specified number of days and emails are sent out to users whose books are coming due. Optionally, users can extend their lease for a specified number of days not to exceed the maximum lease time.
+	</p>
+	<p>
+		Having said that, the platform is purely experimental and was developed for my own personal use and published for others to appreciate.
+	</p>
+	<p>
+		Browse the <a href="{{ url_for('wiki') }}">wiki</a> to learn more about this platform and how it can be used.
+	</p>
+
+	<p>Best,<br><i>alice seaborn.</i></p>
+	
+
+</div>
+
+{% endblock %}
