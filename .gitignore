@@ -1,5 +1,6 @@
-# JupyterLab caches
+# JupyterLab
 **.ipynb_checkpoints/
+**.ipynb
 
 # Python compiled
 **.pyc
