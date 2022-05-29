@@ -10,3 +10,6 @@ project/source/config.py
 
 # Migrations
 project/migrations
+
+# Database files
+project/source/database
