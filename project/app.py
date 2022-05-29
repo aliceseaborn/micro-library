@@ -6,7 +6,9 @@ from flask_flatpages import pygments_style_defs
 
 from source import app, db, pages
 from source.models.User import User
+from source.models.Book import Book
 from source.forms.LoginForm import LoginForm
+from source.config import JSON_BOOK_DATA_PATH
 from source.forms.RegisterForm import RegisterForm
 
 
@@ -19,6 +21,12 @@ def index():
 @app.route('/wiki')
 def wiki():
 	return render_template('wiki.html', pages=pages)
+
+@app.route('/inventory')
+def inventory():
+	with app.app_context():
+		 books = db.session.query(Book).all()
+	return render_template('inventory.html', books=books)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
