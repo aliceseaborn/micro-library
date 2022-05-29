@@ -1,0 +1,24 @@
+{# INVENTORY #}
+
+{% extends "base.html" %}
+{% block content %}
+
+<!--- CONTENT --->
+<div class="jumbotron" style="padding-top: 1rem;">
+
+	<div class="card">
+		<div class="card-header">Inventory</div>
+		<div class="card-body">
+			<div class="d-flex no-block align-items-center m-t-20 m-b-20">
+				{% for book in books %}
+					{{ book.title }} - {{ book.author }}<br>
+				{% endfor %}
+			</div>
+		</div>
+		<div id="sparkline8" class="sparkchart"></div>
+	</div>
+
+</div>
+
+
+{% endblock %}
