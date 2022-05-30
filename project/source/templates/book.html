@@ -1,0 +1,38 @@
+{# ITEM #}
+
+{% extends "base.html" %}
+{% block content %}
+
+<!--- CONTENT --->
+<div class="jumbotron" style="padding-top: 1rem;">
+
+	<div class="card">
+		<div class="card-header">Inventory</div>
+		<div class="card-body">
+			<h5 class="card-title">{{ book.title }} by {{ book.author }}</h5>
+			<p class="card-text">{{ book.synopsis }}</p>
+			<ul class="list-group">
+				<li class="list-group-item"><b>Subject:</b> {{ book.subject }}</li>
+				<li class="list-group-item"><b>Category:</b>
+					{% if book.fiction %}
+						Fiction</li>
+					{% else %}
+						Non-Fiction</li>
+					{% endif %}
+				<li class="list-group-item"><b>Year Published:</b> {{ book.year }}</li>
+				<li class="list-group-item"><b>ISBN:</b> {{ book.isbn }}</li>
+				<li class="list-group-item"><b>Tags:</b> {{ book.tags }}</li>
+				<li class="list-group-item"><b>Available:</b>
+					{% if book.fiction %}
+						Yes</li>
+					{% else %}
+						No</li>
+					{% endif %}
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+
+{% endblock %}

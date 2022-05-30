@@ -24,9 +24,15 @@ def wiki():
 
 @app.route('/inventory')
 def inventory():
-	with app.app_context():
-		 books = db.session.query(Book).all()
+	books = db.session.query(Book).all()
 	return render_template('inventory.html', books=books)
+
+@app.route('/book', methods=['GET'], defaults={'isbn': "0767919386"})
+def book(isbn = "0767919386"):
+	if 'isbn' in request.args:
+		isbn = request.args['isbn']
+	book = Book.query.filter_by(isbn=isbn).first()
+	return render_template('book.html', book=book)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

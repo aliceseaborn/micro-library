@@ -9,11 +9,11 @@
 	<div class="card">
 		<div class="card-header">Inventory</div>
 		<div class="card-body">
-			<div class="d-flex no-block align-items-center m-t-20 m-b-20">
+			<ul class="list-group list-group-flush">
 				{% for book in books %}
-					{{ book.title }} - {{ book.author }}<br>
+				<li class="list-group-item"><a href="{{ url_for('book') }}?isbn={{ book.isbn }}">{{ book.title }} - {{ book.author }}</a></li>
 				{% endfor %}
-			</div>
+			</ul>
 		</div>
 		<div id="sparkline8" class="sparkchart"></div>
 	</div>
