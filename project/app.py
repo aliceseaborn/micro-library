@@ -11,6 +11,7 @@ from source.forms.LoginForm import LoginForm
 from source.config import JSON_BOOK_DATA_PATH
 from source.forms.RegisterForm import RegisterForm
 from source.forms.AddBookForm import AddBookForm
+from source.forms.AddBookButtonForm import AddBookButtonForm
 from source.forms.DeleteBookForm import DeleteBookForm
 
 
@@ -24,10 +25,13 @@ def index():
 def wiki():
 	return render_template('wiki.html', pages=pages)
 
-@app.route('/inventory')
+@app.route('/inventory', methods=['GET', 'POST'])
 def inventory():
+	form = AddBookButtonForm()
+	if form.validate_on_submit():
+		return redirect(url_for('addbook'))
 	books = db.session.query(Book).all()
-	return render_template('inventory.html', books=books)
+	return render_template('inventory.html', books=books, form=form)
 
 @app.route('/addbook', methods=['GET', 'POST'])
 def addbook():
