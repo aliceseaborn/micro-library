@@ -1,0 +1,52 @@
+{# ADD BOOK #}
+
+{% extends "base.html" %}
+{% block content %}
+
+<!--- CONTENT --->
+<div class="jumbotron" style="padding-top: 1rem;">
+
+	<div class="card">
+		<div class="card-header">Add Book</div>
+		<div class="card-body">
+			<div class="d-flex no-block align-items-center m-t-20 m-b-20">
+				<form method="POST">
+					{{ form.hidden_tag() }}
+					<div class="form-group">
+						{{ form.title.label }} {{ form.title() }}
+					</div>
+					<div class="form-group">
+						{{ form.author.label }} {{ form.author() }}
+					</div>
+					<div class="form-group">
+						{{ form.subject.label }} {{ form.subject() }}
+					</div>
+					<div class="form-group">
+						{{ form.synopsis.label }} {{ form.synopsis() }}
+					</div>
+					<div class="form-group">
+						{{ form.fiction.label }} {{ form.fiction() }}
+					</div>
+					<div class="form-group">
+						{{ form.year.label }} {{ form.year() }}
+					</div>
+					<div class="form-group">
+						{{ form.available.label }} {{ form.available() }}
+					</div>
+					<div class="form-group">
+						{{ form.isbn.label }} {{ form.isbn() }}
+					</div>
+					<div class="form-group">
+						{{ form.tags.label }} {{ form.tags() }}
+					</div>
+					{{ form.submit() }}
+				</form>
+			</div>
+		</div>
+		<div id="sparkline8" class="sparkchart"></div>
+	</div>
+
+</div>
+
+
+{% endblock %}

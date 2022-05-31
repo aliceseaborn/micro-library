@@ -10,6 +10,7 @@ from source.models.Book import Book
 from source.forms.LoginForm import LoginForm
 from source.config import JSON_BOOK_DATA_PATH
 from source.forms.RegisterForm import RegisterForm
+from source.forms.AddBookForm import AddBookForm
 
 
 # ------------------------------ FLASK ROUTES ------------------------------ #
@@ -26,6 +27,25 @@ def wiki():
 def inventory():
 	books = db.session.query(Book).all()
 	return render_template('inventory.html', books=books)
+
+@app.route('/addbook', methods=['GET', 'POST'])
+def addbook():
+	form = AddBookForm()
+	if form.validate_on_submit():
+		book = Book(title=form.title.data,
+					author=form.author.data,
+					fiction=form.fiction.data,
+					year=form.year.data,
+					subject=form.subject.data,
+					synopsis=form.synopsis.data,
+					isbn=form.isbn.data,
+					available=form.available.data,
+					tags=form.tags.data)
+		db.session.add(book)
+		db.session.commit()
+		flash(f"{form.title.data} has been added to the database.")
+		return redirect(url_for('inventory'))
+	return render_template('addbook.html', form=form)
 
 @app.route('/book', methods=['GET'], defaults={'isbn': "0767919386"})
 def book(isbn = "0767919386"):
