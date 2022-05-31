@@ -21,7 +21,8 @@ class AddBookForm(FlaskForm):
 		render_kw=text_style)
 	fiction = SelectField('Fiction', validators=[DataRequired()],
 		render_kw=text_style, choices=choices['fiction'])
-	year = StringField('Year Published', validators=[DataRequired()])
+	year = StringField('Year Published', validators=[DataRequired()],
+		render_kw=text_style)
 	subject = SelectField('Subject', validators=[DataRequired()],
 		render_kw=text_style, choices=choices['subject'])
 	synopsis = TextAreaField('Synopsis', validators=[DataRequired()], 
