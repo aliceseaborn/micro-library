@@ -13,28 +13,28 @@
 			<p class="card-text">{{ book.synopsis }}</p>
 			<ul class="list-group">
 				<li class="list-group-item"><b>Subject:</b> {{ book.subject }}</li>
-				<li class="list-group-item"><b>Category:</b>
-					{% if book.fiction %}
-						Fiction</li>
-					{% else %}
-						Non-Fiction</li>
-					{% endif %}
+				<li class="list-group-item"><b>Category:</b> {{ book.category }}</li>
 				<li class="list-group-item"><b>Year Published:</b> {{ book.year }}</li>
 				<li class="list-group-item"><b>ISBN:</b> {{ book.isbn }}</li>
 				<li class="list-group-item"><b>Tags:</b> {{ book.tags }}</li>
-				<li class="list-group-item"><b>Available:</b>
-					{% if book.fiction %}
-						Yes</li>
-					{% else %}
-						No</li>
-					{% endif %}
+				<li class="list-group-item"><b>Status:</b> {{ book.status }}</li>
 			</ul>
 		</div>
 		<div class="card-footer">
-			<form method="POST">
-				{{ form.hidden_tag() }}
-				{{ form.delete() }}
-			</form>
+			<div class="row">
+				<div class="col-sm-2">
+					<form name="edit_form" method="POST"
+			action="{{ url_for('edit_book') + '?isbn=' + book.isbn }}">
+						<button type="submit" class="btn btn-primary" />Edit Details</button>
+					</form>
+				</div>
+				<div class="col-sm-2">
+					<form name="delete_form" method="POST"
+			action="{{ url_for('delete_book') + '?isbn=' + book.isbn }}">
+						<button type="submit" class="btn btn-danger">Delete Book</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
 
