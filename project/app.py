@@ -52,8 +52,8 @@ def addbook():
 		return redirect(url_for('inventory'))
 	return render_template('addbook.html', form=form)
 
-@app.route('/book', methods=['GET', 'POST'], defaults={'isbn': "0767919386"})
-def book(isbn = "0767919386"):
+@app.route('/book', methods=['GET', 'POST'], defaults={'isbn': "0000000000"})
+def book(isbn = "0000000000"):
 	if 'isbn' in request.args:
 		isbn = request.args['isbn']
 	form = DeleteBookButton()
