@@ -5,10 +5,12 @@ from flask_login import login_user, login_required, logout_user
 from flask_flatpages import pygments_style_defs
 
 from source import app, db, pages
+from source.config import JSON_BOOK_DATA_PATH
+
 from source.models.User import User
 from source.models.Book import Book
+
 from source.forms.LoginForm import LoginForm
-from source.config import JSON_BOOK_DATA_PATH
 from source.forms.RegisterForm import RegisterForm
 from source.forms.AddBookForm import AddBookForm
 from source.forms.AddBookButton import AddBookButton
