@@ -11,6 +11,7 @@ from source.forms.LoginForm import LoginForm
 from source.config import JSON_BOOK_DATA_PATH
 from source.forms.RegisterForm import RegisterForm
 from source.forms.AddBookForm import AddBookForm
+from source.forms.DeleteBookForm import DeleteBookForm
 
 
 # ------------------------------ FLASK ROUTES ------------------------------ #
@@ -47,12 +48,18 @@ def addbook():
 		return redirect(url_for('inventory'))
 	return render_template('addbook.html', form=form)
 
-@app.route('/book', methods=['GET'], defaults={'isbn': "0767919386"})
+@app.route('/book', methods=['GET', 'POST'], defaults={'isbn': "0767919386"})
 def book(isbn = "0767919386"):
 	if 'isbn' in request.args:
 		isbn = request.args['isbn']
+	form = DeleteBookForm()
+	if form.validate_on_submit():
+		Book.query.filter(Book.isbn==isbn).delete()
+		db.session.commit()
+		flash(f"The selected book has been removed from the database.")
+		return redirect(url_for('inventory'))
 	book = Book.query.filter_by(isbn=isbn).first()
-	return render_template('book.html', book=book)
+	return render_template('book.html', book=book, form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
