@@ -28,13 +28,13 @@
 					{% else %}
 						No</li>
 					{% endif %}
-				<form method="POST">
-					{{ form.hidden_tag() }}
-					<div class="form-group">
-						<br>{{ form.delete() }}
-					</div>
-				</form>
 			</ul>
+		</div>
+		<div class="card-footer">
+			<form method="POST">
+				{{ form.hidden_tag() }}
+				{{ form.delete() }}
+			</form>
 		</div>
 	</div>
 
