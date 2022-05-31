@@ -4,5 +4,5 @@ from flask_wtf import FlaskForm
 from wtforms.fields import SubmitField
 
 
-class AddBookButtonForm(FlaskForm):
+class AddBookButton(FlaskForm):
 	add = SubmitField('Add Book')

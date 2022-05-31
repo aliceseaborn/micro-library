@@ -11,8 +11,8 @@ from source.forms.LoginForm import LoginForm
 from source.config import JSON_BOOK_DATA_PATH
 from source.forms.RegisterForm import RegisterForm
 from source.forms.AddBookForm import AddBookForm
-from source.forms.AddBookButtonForm import AddBookButtonForm
-from source.forms.DeleteBookForm import DeleteBookForm
+from source.forms.AddBookButton import AddBookButton
+from source.forms.DeleteBookButton import DeleteBookButton
 
 
 # ------------------------------ FLASK ROUTES ------------------------------ #
@@ -27,7 +27,7 @@ def wiki():
 
 @app.route('/inventory', methods=['GET', 'POST'])
 def inventory():
-	form = AddBookButtonForm()
+	form = AddBookButton()
 	if form.validate_on_submit():
 		return redirect(url_for('addbook'))
 	books = db.session.query(Book).all()
@@ -56,7 +56,7 @@ def addbook():
 def book(isbn = "0767919386"):
 	if 'isbn' in request.args:
 		isbn = request.args['isbn']
-	form = DeleteBookForm()
+	form = DeleteBookButton()
 	if form.validate_on_submit():
 		Book.query.filter(Book.isbn==isbn).delete()
 		db.session.commit()
