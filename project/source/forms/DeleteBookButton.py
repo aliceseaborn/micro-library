@@ -7,4 +7,4 @@ from wtforms.fields import SubmitField
 delete_style={'type': 'button', 'class': 'btn btn-danger'}
 
 class DeleteBookButton(FlaskForm):
-	delete = SubmitField('Delete', render_kw=delete_style)
+	delete = SubmitField('Delete Book', render_kw=delete_style)
