@@ -1,4 +1,4 @@
-# ADD BOOK FORM
+# EDIT BOOK FORM
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField
@@ -8,7 +8,7 @@ from wtforms import ValidationError
 
 text_style={'type': 'text', 'class': 'form-control'}
 
-class AddBookForm(FlaskForm):
+class EditBookForm(FlaskForm):
 	title = StringField('Title', validators=[DataRequired()],
 		render_kw=text_style)
 	author = StringField('Author', validators=[DataRequired()],
@@ -28,8 +28,4 @@ class AddBookForm(FlaskForm):
 	tags = StringField('Tags', validators=[DataRequired()], 
 		render_kw=text_style)
 	submit = SubmitField('Submit')
-
-	def check_isbn(self, field):
-		if Book.query.filter_by(isbn=field.data).first():
-			raise ValidationError('A book with this ISBN already exists.')
 

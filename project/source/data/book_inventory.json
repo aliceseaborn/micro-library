@@ -4,24 +4,24 @@
         	"id" : 0,
             "title" : "At home : a short history of private life",
             "author" : "Bryson, Bill",
-            "fiction" : "False",
+            "category" : "Fiction",
             "year" : 2010,
             "subject" : "History",
             "synopsis" : "Bryson takes readers on a tour of his house, a rural English parsonage, showing how each room has figured in the evolution of private life.",
             "isbn" : "0767919386",
-            "available" : "True",
+            "status" : "Available",
             "tags" : "history, private life, social evolution"
         },
         {
         	"id" : 1,
             "title" : "The Social Contract",
             "author" : "Rousseau, Jean-Jacques",
-            "fiction" : "False",
+            "category" : "Fiction",
             "year" : 1762,
             "subject" : "Philosophy",
             "synopsis" : "The Social Contract argued against the idea that monarchs were divinely empowered to legislate. Rousseau asserts that only the people, who are sovereign, have that all-powerful right.",
             "isbn" : "3218357610",
-            "available" : "False",
+            "status" : "Unavailable",
             "tags" : "history, political science, consent"
         }
     ]

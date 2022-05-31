@@ -1,0 +1,52 @@
+{# EDIT BOOK #}
+
+{% extends "base.html" %}
+{% block content %}
+
+<!--- CONTENT --->
+<div class="jumbotron" style="padding-top: 1rem;">
+
+	<div class="card">
+		<div class="card-header">Edit Book</div>
+		<div class="card-body">
+			<div class="d-flex no-block align-items-center m-t-20 m-b-20">
+				<form method="POST">
+					{{ form.hidden_tag() }}
+					<div class="form-group">
+						{{ form.title.label }} <input id="title" name="title" required="" type="text" class="form-control" value="{{ book.title }}">
+					</div>
+					<div class="form-group">
+						{{ form.author.label }} <input id="author" name="author" required="" type="text" class="form-control" value="{{ book.author }}">
+					</div>
+					<div class="form-group">
+						{{ form.subject.label }} <input id="subject" name="subject" required="" type="text" class="form-control" value="{{ book.subject }}">
+					</div>
+					<div class="form-group">
+						{{ form.synopsis.label }} <textarea id="synopsis" name="synopsis" required="" type="text" class="form-control">{{ book.synopsis }}</textarea>
+					</div>
+					<div class="form-group">
+						{{ form.category.label }} <input id="category" name="category" required="" type="text" class="form-control" value="{{ book.category }}">
+					</div>
+					<div class="form-group">
+						{{ form.year.label }} <input id="year" name="year" required="" type="text" class="form-control" value="{{ book.year }}">
+					</div>
+					<div class="form-group">
+						{{ form.status.label }} <input id="status" name="status" required="" type="text" class="form-control" value="{{ book.status }}">
+					</div>
+					<div class="form-group">
+						{{ form.isbn.label }} <input id="isbn" name="isbn" required="" type="text" class="form-control" value="{{ book.isbn }}">
+					</div>
+					<div class="form-group">
+						{{ form.tags.label }} <input id="tags" name="tags" required="" type="text" class="form-control" value="{{ book.tags }}">
+					</div>
+					{{ form.submit() }}
+				</form>
+			</div>
+		</div>
+		<div id="sparkline8" class="sparkchart"></div>
+	</div>
+
+</div>
+
+
+{% endblock %}
